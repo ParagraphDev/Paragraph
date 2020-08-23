@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Paragraph</title>
+<script>if (typeof module === 'object') {window.module = module; module = undefined;}
+</script>
+<link rel="stylesheet" href="./css/app.css">
+<script src="./js/config.js"></script>
+<script src="./src-noconflict/ace.js" type="text/javascript"></script>
+
+</head>
+<body>
+
+    <div class="container">
+
+		<div class="titleBar titleBarStyle">
+
+
+			<div class="windowTitle draggable"> <img src="./img/logo.png" width="20" alt="" srcset=""> </div>
+
+			<div class="windowControls windowControlsStyle">
+				<button id="reduce"><i class="fas fa-minus"></i></button>
+				<button id="maximize"><i class="far fa-square"></i></button>
+				<button id="close"><i class="far fa-times"></i></button>
+			</div>
+
+		</div>
+
+		<div id="menu-bar">
+			<ul class="main-menu">
+				<li>
+					Fichier
+					<ul>
+					   	<li class="icon save" onclick='createNewFile()'><a href="#">Nouveau Fichier   <span> Ctrl+N</span></a></li>
+					   	<li class="icon save" onclick='createNewFile()'><a href="#">Nouveau Fenêtre   <span> Ctrl+Maj+N</span></a></li>
+						<li class="icon save" id="open"><a href="#">Ouvrir un fichier <span> Ctrl+O</span></a></li>
+						<li class="icon save"><a href="#">Ouvrir un dossier <span> Ctrl+Maj+O</span></a></li>	
+						<li class="icon save" onclick='saveFile()'><a href="javascript:void(0)">Ouvrir un fichier récent <span><i class="fal fa-chevron-right"></i></span></a></li>
+						<li class="icon save" onclick='saveFile()'><a href="javascript:void(0)">Enregistrer<span>Ctrl+S</span></a></li>
+						<li class="icon save" onclick="showSaveDialogAndSaveFile()"><a href="javascript:void(0)">Enregistrer sous <span>Ctrl+Maj+S</span></a></li>		
+						<li class="icon save" onclick="showSaveDialogAndSaveFile()"><a href="javascript:void(0)">Tout enregistrer <span>Ctrl+Alt+S</span></a></li>		
+						<hr>
+						<li class="icon save" onclick='saveFile()'><a href="javascript:void(0)">Préférences</a></li>
+						<hr>
+						<li class="icon save" onclick='saveFile()'><a href="javascript:void(0)">Fermer la fenêtre <span> Ctrl+F4</span></a></li>
+						<li class="icon save" onclick='saveFile()'><a href="javascript:void(0)">Fermer l'onglet <span> Ctrl+W</span></a></li>
+						<hr>
+						<li class="icon save" onclick='quitApp()'><a href="javascript:void(0)">Quitter <span> Alt+F4</span></a></li>						
+					</ul>
+				</li>
+				<li>
+					Edition
+					<ul>
+						<li class="icon-save"><a href="#">Annuler <span> Ctrl+Z</span></a></li>
+						<li class="icon-save"><a href="#">Répéter <span> Ctrl+Y</span></a></li>
+						<hr>
+						<li class="icon-save"><a href="#">Copier <span> Ctrl+C</span></a></li>
+						<li class="icon-save"><a href="#">Coller <span> Ctrl+V</span></a></li>
+						<li class="icon-save"><a href="#">Couper <span> Ctrl+X</span></a></li>
+						<hr>
+						<li class="icon-save"><a href="#">Rechercher <span> Ctrl+F</span></a></li>
+						<li class="icon-save"><a href="#">Remplacer <span> Ctrl+H</span></a></li>
+					</ul>
+				</li>
+				<li>
+					Selection
+					<ul>
+						<li class="icon-save"><a href="#">Tout sélectionner <span> Ctrl+A</span></a></li>
+						<hr>
+						<li class="icon-save"><a href="#">Sélectionner cette ligne <span> Ctrl+L</span></a></li>
+						<li class="icon-save"><a href="#">Séléctionner le mot <span> Ctrl+D</span></a></li>
+						<li class="icon-save"><a href="#">Séléctionner la lettre <span> Ctrl+E</span></a></li>
+						<hr>
+						<li class="icon-save"><a href="#">Sélectionner la première ligne <span> Ctrl+Alt+↑</span></a></li>
+						<li class="icon-save"><a href="#">Sélectionner la dernière ligne <span> Ctrl+Alt+↓</span></a></li>
+					</ul>
+				</li>
+			</ul>              
+		</div> 
+	</div>
+	<div class="codingScreen">
+		<div class="explorerContainer explorerContainerStyles">
+			<div class="filesContainer">
+			</div>
+			<div class="folderFiles">
+				<div class="folderTitle">
+				</div>
+				<div class="exploredFilesContainer">
+				</div>
+			</div>
+		</div>
+
+
+		<div class="editor-container">
+			<div id="editor"></div>
+		</div>
+	</div>
+    
+<script src="./js/titleBarStuff.js"></script>
+<script src="./js/shorcuts.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="./js/jquery.menu.js"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/nord_dark");
+    editor.setFontSize(17)
+	editor.session.setMode("ace/mode/javascript");
+</script>
+</body>
+</html>
